@@ -36,7 +36,7 @@ if __name__ == '__main__':
             video_cnt += 1  # video sequence number.
             out['videos'].append({'id': video_cnt, 'file_name': seq})
             seq_anno_path = os.path.join(annos_path, seq, "gt/gt.txt")
-            seq_img_path = os.path.join(imgs_path, seq)
+            seq_img_path = os.path.join(imgs_path, seq, 'rgb')
             # img_path = os.path.join(seq_path, 'img1')
             # ann_path = os.path.join(seq_path, 'gt/gt.txt')
             images = os.listdir(seq_img_path)
