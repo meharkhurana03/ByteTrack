@@ -31,7 +31,7 @@ if __name__ == '__main__':
         video_cnt = 0
         tid_curr = 0
         tid_last = -1
-        for seq in sorted(seqs):
+        for seq in tqdm.tqdm(sorted(seqs)):
             if '.DS_Store' in seq:
                 continue
             video_cnt += 1  # video sequence number.
@@ -49,11 +49,13 @@ if __name__ == '__main__':
             else:
                 image_range = [0, num_images - 1]
 
-            for i in tqdm.tqdm(range(num_images)):
+            for i in range(num_images):
                 if i < image_range[0] or i > image_range[1]:
                     continue
-                img = cv2.imread(os.path.join(imgs_path, '{}/rgb/{:04d}.jpg'.format(seq, i + 1)))
-                height, width = img.shape[:2]
+                # img = cv2.imread(os.path.join(imgs_path, '{}/rgb/{:04d}.jpg'.format(seq, i + 1)))
+                # height, width = img.shape[:2]
+                # print(height, width)
+                height, width = (1080, 1920)
                 image_info = {'file_name': '{}/rgb/{:06d}.jpg'.format(seq, i + 1),  # image name.
                               'id': image_cnt + i + 1,  # image number in the entire training set.
                               'frame_id': i + 1 - image_range[0],  # image number in the video sequence, starting from 1.
