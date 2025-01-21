@@ -2,6 +2,7 @@ import os
 import numpy as np
 import json
 import cv2
+import tqdm
 
 
 # Use the same script for MOT16
@@ -48,7 +49,7 @@ if __name__ == '__main__':
             else:
                 image_range = [0, num_images - 1]
 
-            for i in range(num_images):
+            for i in tqdm.tqdm(range(num_images)):
                 if i < image_range[0] or i > image_range[1]:
                     continue
                 img = cv2.imread(os.path.join(imgs_path, '{}/rgb/{:04d}.jpg'.format(seq, i + 1)))
