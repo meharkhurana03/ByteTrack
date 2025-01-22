@@ -43,7 +43,7 @@ class Exp(MyExp):
             data_dir=os.path.join(get_yolox_datadir(), "motsynth"),
             json_file=self.train_ann,
             # TODO: check if this makes sense:
-            name='',
+            name='frames',
             img_size=self.input_size,
             preproc=TrainTransform(
                 rgb_means=(0.485, 0.456, 0.406),
