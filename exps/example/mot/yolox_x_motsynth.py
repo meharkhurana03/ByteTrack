@@ -17,8 +17,8 @@ class Exp(MyExp):
         self.exp_name = os.path.split(os.path.realpath(__file__))[1].split(".")[0]
         self.train_ann = "train.json"
         self.val_ann = "test.json"    # change to train.json when running on training set
-        self.input_size = (800, 1440)
-        self.test_size = (800, 1440)
+        self.input_size = (810, 1440)
+        self.test_size = (810, 1440)
         self.random_size = (18, 32)
         self.max_epoch = 40
         self.print_interval = 20
@@ -86,7 +86,8 @@ class Exp(MyExp):
             mosaic=not no_aug,
         )
 
-        dataloader_kwargs = {"num_workers": self.data_num_workers, "pin_memory": True}
+        # dataloader_kwargs = {"num_workers": self.data_num_workers, "pin_memory": True}
+        dataloader_kwargs = {"num_workers": 0, "pin_memory": False}
         dataloader_kwargs["batch_sampler"] = batch_sampler
         train_loader = DataLoader(self.dataset, **dataloader_kwargs)
 
