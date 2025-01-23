@@ -253,6 +253,10 @@ class Trainer:
             )
             self.meter.clear_meters()
 
+        # save ckpt
+        if (self.iter + 1) % (self.exp.print_interval*100) == 0:
+            self.save_ckpt("latest_iter")
+
         # random resizing
         if self.exp.random_size is not None and (self.progress_in_iter + 1) % 10 == 0:
             self.input_size = self.exp.random_resize(
